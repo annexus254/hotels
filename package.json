@@ -1,0 +1,23 @@
+{
+  "name": "hotels",
+  "version": "1.0.0",
+  "description": "![](https://git.generalassemb.ly/Web-Development-Immersive-Remote/WDIR-Outrun/blob/master/ga_cog.png)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annexus254/hotels.git"
+  },
+  "author": "annexus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/annexus254/hotels/issues"
+  },
+  "homepage": "https://github.com/annexus254/hotels#readme",
+  "dependencies": {
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14"
+  }
+}
