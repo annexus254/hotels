@@ -49,6 +49,7 @@ serena.save().then( ()=> console.log("added provided hotel data") ).catch(err=>c
 /**
  * Checking for the number of hotels in the database
  */
+/*
 Hotel.count({} , (err , data)=> {
 
   if ( err ) console.log( err.message );
@@ -56,3 +57,23 @@ Hotel.count({} , (err , data)=> {
    console.log ( `There are ${data} hotels in this database` );
 
 });
+*/
+
+
+/**
+ * USING MONGOOSE TO CRUD OUR DATA
+ */
+
+/*  C - Create
+const hiltonData  = { 
+                      name : "Hilton Hotel", 
+                      location : "Nairobi", 
+                      rating : 5, 
+                      vacancies : true,
+                      tags : ["Five-star" , "Luxury" , "Expensive" , "Exotic"],
+                      rooms : [{roomNumber: 25, size: "100 by 100", price: 100000, booked: false}]
+                    };
+
+const hilton      = new Hotel(hiltonData);
+hilton.save().then( ()=> console.log("Added provided hotel data") ).catch(err=>console.log(err));
+*/
