@@ -77,3 +77,7 @@ const hiltonData  = {
 const hilton      = new Hotel(hiltonData);
 hilton.save().then( ()=> console.log("Added provided hotel data") ).catch(err=>console.log(err));
 */
+
+/*  R - Read
+*/
+Hotel.find({}).then( data => console.log(data) );
