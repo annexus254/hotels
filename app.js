@@ -82,5 +82,16 @@ hilton.save().then( ()=> console.log("Added provided hotel data") ).catch(err=>c
 Hotel.find({}).then( data => console.log(data) );
 Hotel.find({} , "-_id name").then( data => console.log(data) );
 Hotel.find({name : "Hilton Hotel"}).then( data => console.log(data) );
-*/
 Hotel.find({vacancies : {$gt : 0}} , "-rating").then( data => console.log(data) );
+*/
+
+/*  D - Delete
+*/
+Hotel.deleteMany({name : 'serena'} , function (err){
+  if(err)
+  {
+    console.log(err);
+    return;
+  }
+  console.log("Successfully deleted at least one hotel");
+});
