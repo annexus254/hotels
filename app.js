@@ -86,7 +86,6 @@ Hotel.find({vacancies : {$gt : 0}} , "-rating").then( data => console.log(data) 
 */
 
 /*  D - Delete
-*/
 Hotel.deleteMany({name : 'serena'} , function (err){
   if(err)
   {
@@ -94,4 +93,12 @@ Hotel.deleteMany({name : 'serena'} , function (err){
     return;
   }
   console.log("Successfully deleted at least one hotel");
+});
+*/
+
+/*  U - Update
+*/
+Hotel.updateOne({name : 'Hilton Hotel'} , {rating : 5} , (err , resp) =>{
+  if(err) console.log(err);
+  else    console.log(resp);
 });
