@@ -1,3 +1,4 @@
+const express     =   require("express");
 const mongoose    =   require("mongoose");
 mongoose.Promise  =   global.Promise;
 const db          =   mongoose.connection;
@@ -19,6 +20,9 @@ mongoose.connect(
   mongoURI,
       
   { useNewUrlParser: true, useUnifiedTopology: true },
+  _ =>{
+    app.listen(5000 , _ => console.log("\nServer started. Listening on port 5000...") );
+  }
 );
 
 
@@ -27,78 +31,16 @@ mongoose.connect(
 
 db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
 
-db.on("connected", () => console.log("Mongo running at " + mongoURI + "\n\nConnection made!"));
+db.on("connected", () => console.log("Mongo running at " + mongoURI + "\n\nConnection to the database successfully made!"));
 
 db.on("disconnected", () => console.log("mongo disconnected"));
 
-/**
- * Adding seed data to the database
- */
-/*
-  //Method 1
-Hotel.create( hotelSeed , function (err , serena){
-  if ( err ) console.log ( err.message );
+//  HUNGRY FOR MORE?
+const app     = express();
 
-  console.log( "added provided hotel data" );
-})
-  //Method 2
-const serena  = new Hotel(hotelSeed);
-serena.save().then( ()=> console.log("added provided hotel data") ).catch(err=>console.log(err));
-*/
-
-/**
- * Checking for the number of hotels in the database
- */
-/*
-Hotel.count({} , (err , data)=> {
-
-  if ( err ) console.log( err.message );
-
-   console.log ( `There are ${data} hotels in this database` );
-
-});
-*/
-
-
-/**
- * USING MONGOOSE TO CRUD OUR DATA
- */
-
-/*  C - Create
-const hiltonData  = { 
-                      name : "Hilton Hotel", 
-                      location : "Nairobi", 
-                      rating : 5, 
-                      vacancies : true,
-                      tags : ["Five-star" , "Luxury" , "Expensive" , "Exotic"],
-                      rooms : [{roomNumber: 25, size: "100 by 100", price: 100000, booked: false}]
-                    };
-
-const hilton      = new Hotel(hiltonData);
-hilton.save().then( ()=> console.log("Added provided hotel data") ).catch(err=>console.log(err));
-*/
-
-/*  R - Read
-Hotel.find({}).then( data => console.log(data) );
-Hotel.find({} , "-_id name").then( data => console.log(data) );
-Hotel.find({name : "Hilton Hotel"}).then( data => console.log(data) );
-Hotel.find({vacancies : {$gt : 0}} , "-rating").then( data => console.log(data) );
-*/
-
-/*  D - Delete
-Hotel.deleteMany({name : 'serena'} , function (err){
-  if(err)
-  {
-    console.log(err);
-    return;
-  }
-  console.log("Successfully deleted at least one hotel");
-});
-*/
-
-/*  U - Update
-*/
-Hotel.updateOne({name : 'Hilton Hotel'} , {rating : 5} , (err , resp) =>{
-  if(err) console.log(err);
-  else    console.log(resp);
+app.get("/" , (req , resp) => {
+  Hotel.find({}).then((data) => {
+    resp.status(200).send(data);
+    console.log("Data successfully sent");
+  });
 });
