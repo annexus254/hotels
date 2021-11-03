@@ -45,3 +45,14 @@ Hotel.create( hotelSeed , function (err , serena){
 const serena  = new Hotel(hotelSeed);
 serena.save().then( ()=> console.log("added provided hotel data") ).catch(err=>console.log(err));
 */
+
+/**
+ * Checking for the number of hotels in the database
+ */
+Hotel.count({} , (err , data)=> {
+
+  if ( err ) console.log( err.message );
+
+   console.log ( `There are ${data} hotels in this database` );
+
+});
