@@ -44,3 +44,10 @@ app.get("/" , (req , resp) => {
     console.log("Data successfully sent");
   });
 });
+
+app.get("/hotels/:id" , (req , resp) => {
+  Hotel.findById(req.params['id']).then( data => {
+    resp.status(200).send(data);
+    console.log("Data successfully sent");
+  });
+});
